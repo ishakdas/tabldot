@@ -1,41 +1,34 @@
 {
   "project_info": {
-    "project_number": "770181041411",
-    "project_id": "piyasa-ekrani-5f778",
-    "storage_bucket": "piyasa-ekrani-5f778.appspot.com"
+    "project_number": "369242570986",
+    "project_id": "tabldot",
+    "storage_bucket": "tabldot.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:770181041411:android:9cd5d56da1ae79911fad36",
+        "mobilesdk_app_id": "1:369242570986:android:8f210d9a8521b806c79793",
         "android_client_info": {
-          "package_name": "org.piyasaekrani.app.piyasaekrani"
+          "package_name": "org.piyasaekrani.app.tabldot"
         }
       },
       "oauth_client": [
         {
-          "client_id": "770181041411-o85vqmiqpo695u3lmlfdta1btmaejeni.apps.googleusercontent.com",
+          "client_id": "369242570986-iaildk46kkq154ap5ep25vj5vufuu9al.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyArm79aPYXd2OjndqLZFnp8erTF9kdoti4"
+          "current_key": "AIzaSyBNfh-vt9e_FUDKGHNOwXeEwdLShg-PEkE"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "770181041411-o85vqmiqpo695u3lmlfdta1btmaejeni.apps.googleusercontent.com",
+              "client_id": "369242570986-iaildk46kkq154ap5ep25vj5vufuu9al.apps.googleusercontent.com",
               "client_type": 3
-            },
-            {
-              "client_id": "770181041411-t81gk4abqtacohu893a2ojs087aam174.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "org.piyasaekrani.app.piyasaekrani"
-              }
             }
           ]
         }

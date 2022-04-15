@@ -1,12 +1,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.piyasaekrani.app.piyasaekrani">
+    package="org.piyasaekrani.app.tabldot">
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.INTERNET"/>
    <application
         android:requestLegacyExternalStorage="true"
         android:usesCleartextTraffic="true"
-        android:label="Piyasa Ekranı"
+        android:label="Tabldot"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

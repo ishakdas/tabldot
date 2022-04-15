@@ -40,20 +40,20 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyArm79aPYXd2OjndqLZFnp8erTF9kdoti4',
-    appId: '1:770181041411:android:9cd5d56da1ae79911fad36',
-    messagingSenderId: '770181041411',
-    projectId: 'piyasa-ekrani-5f778',
-    storageBucket: 'piyasa-ekrani-5f778.appspot.com',
+    apiKey: 'AIzaSyBNfh-vt9e_FUDKGHNOwXeEwdLShg-PEkE',
+    appId: '1:369242570986:android:8f210d9a8521b806c79793',
+    messagingSenderId: '369242570986',
+    projectId: 'tabldot',
+    storageBucket: 'tabldot.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyClHNK7Yfzl54gLO_c_7mAMWqDu2y8S5Qo',
-    appId: '1:770181041411:ios:3631d5505854fd1c1fad36',
-    messagingSenderId: '770181041411',
-    projectId: 'piyasa-ekrani-5f778',
-    storageBucket: 'piyasa-ekrani-5f778.appspot.com',
-    iosClientId: '770181041411-t81gk4abqtacohu893a2ojs087aam174.apps.googleusercontent.com',
-    iosBundleId: 'org.piyasaekrani.app.piyasaekrani',
+    apiKey: 'AIzaSyDI-d3OMAsDpVVYTyAHr3JDf-wJFcDeK1o',
+    appId: '1:369242570986:ios:53fb87cde583f964c79793',
+    messagingSenderId: '369242570986',
+    projectId: 'tabldot',
+    storageBucket: 'tabldot.appspot.com',
+    iosClientId: '369242570986-am27456e89askogvealrlaggdj06vjgd.apps.googleusercontent.com',
+    iosBundleId: 'org.piyasaekrani.app.tabldot',
   );
 }

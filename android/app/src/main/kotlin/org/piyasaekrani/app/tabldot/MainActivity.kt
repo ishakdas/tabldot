@@ -1,4 +1,4 @@
-package org.piyasaekrani.app.piyasaekrani
+package org.piyasaekrani.app.tabldot
 
 import io.flutter.embedding.android.FlutterActivity
 
