@@ -1,0 +1,12 @@
+{
+    "main": {
+        "title": "Piyasa Ekranı",
+        "bodytext": "Dil Desteği yazısı için MobilerDev'i ziyaret edin.",
+        "errorInternet":"Birşeyler ters gitti. Lütfen internet bağlantınızı kontrol edin.",
+        "childName":"Ürün adı: ",
+        "details":"Detaylar"
+    },
+    "savedGallery":"Galeriye Kaydedildi",
+    "shareApp":"Piyasa Ekranını Paylaş",
+    "openContact":"Bizimle İletişime Geçin"
+}
