@@ -7,6 +7,7 @@ class ThemeClass {
           primary: Colors.blueGrey[900],
         ),
       ),
+      iconTheme: const IconThemeData(color: Colors.white),
       scaffoldBackgroundColor: Colors.white,
       colorScheme: const ColorScheme.light(),
       appBarTheme: const AppBarTheme(

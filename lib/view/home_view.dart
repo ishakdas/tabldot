@@ -19,7 +19,7 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.indigo,
+        backgroundColor: const Color.fromARGB(255, 3, 47, 83),
         drawer: const DrawerWidget(),
         appBar: buildAppBar(),
         body: context.watch<HomeViewModel>().state == HomeState.BUSY
@@ -85,7 +85,7 @@ Column bodyColumn(Post homePost, BuildContext context) {
         padding: const EdgeInsets.only(left: 8.0, top: 8.0),
         child: Text(
           LocaleKeys.child_name.tr() + homePost.attributes!.baslik!,
-          style: const TextStyle(fontWeight: FontWeight.w700),
+          style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w700, color: Colors.white),
         ),
       ),
       PxHeight(),
@@ -100,17 +100,18 @@ Column bodyColumn(Post homePost, BuildContext context) {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    IconButton(
-                        icon: const FaIcon(FontAwesomeIcons.circleInfo),
-                        onPressed: () async {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => PostDetail(
-                                      post: homePost.attributes!,
-                                    )),
-                          );
-                        }),
+                    if (homePost.attributes?.aciklama != null)
+                      IconButton(
+                          icon: const FaIcon(FontAwesomeIcons.circleInfo),
+                          onPressed: () async {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => PostDetail(
+                                        post: homePost.attributes!,
+                                      )),
+                            );
+                          }),
                   ],
                 )),
             Expanded(
@@ -119,7 +120,10 @@ Column bodyColumn(Post homePost, BuildContext context) {
                     ? TextButton(
                         onPressed: () {},
                         child: IconButton(
-                            icon: const FaIcon(FontAwesomeIcons.earthAmericas),
+                            icon: const FaIcon(
+                              FontAwesomeIcons.earthAmericas,
+                              color: Colors.white,
+                            ),
                             onPressed: () async {
                               if (await canLaunch(homePost.attributes!.link!)) {
                                 await launch(homePost.attributes!.link!);
@@ -140,7 +144,10 @@ Column bodyColumn(Post homePost, BuildContext context) {
                       print(error);
                     }
                   },
-                  child: const FaIcon(FontAwesomeIcons.download),
+                  child: const FaIcon(
+                    FontAwesomeIcons.download,
+                    color: Colors.white,
+                  ),
                 )),
           ],
         ),
