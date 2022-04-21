@@ -73,7 +73,7 @@ dependencies:
   firebase_core: ^1.14.1
   firebase_messaging: ^11.2.13
 
-  advance_pdf_viewer: any
+  advance_pdf_viewer_fork: ^2.0.0
 
 dev_dependencies:
   flutter_test:
@@ -131,7 +131,7 @@ flutter:
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
 flutter_native_splash:
-  color: "#0b497c"
+  color: "#1D530E"
   image: assets/images/tabldot-splash.png
   android_12:
   fullscreen: false

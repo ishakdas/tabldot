@@ -21,7 +21,7 @@ class HomeViewModel with ChangeNotifier {
   int _pageKey = 0;
   late List<Post> homeList;
   static const _pageSize = 25;
-  final PagingController<int, Post> pagingController = PagingController(firstPageKey: 0);
+  late PagingController<int, Post> pagingController = PagingController(firstPageKey: 0);
   HomeViewModel() {
     homeList = [];
     _state = HomeState.IDLE;
@@ -38,6 +38,7 @@ class HomeViewModel with ChangeNotifier {
   }
 
   Future<List<Post>> fetchJobs(int pageKey) async {
+    pagingController = PagingController(firstPageKey: 0);
     _pageKey = pageKey;
     try {
       state = HomeState.BUSY;
