@@ -1,8 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:piyasaekrani/core/widgets/core_widget.dart';
-import 'package:piyasaekrani/core/widgets/scale_route.dart';
+import 'package:tabldot/core/widgets/core_widget.dart';
+import 'package:tabldot/core/widgets/scale_route.dart';
 
 import '../../view/pdf_read.dart';
 import '../../view/video_player.dart';

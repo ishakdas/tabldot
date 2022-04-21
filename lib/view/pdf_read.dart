@@ -1,6 +1,6 @@
 import 'package:advance_pdf_viewer/advance_pdf_viewer.dart';
 import 'package:flutter/material.dart';
-import 'package:piyasaekrani/core/widgets/core_widget.dart';
+import 'package:tabldot/core/widgets/core_widget.dart';
 
 class PdfReader extends StatefulWidget {
   const PdfReader({

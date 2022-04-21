@@ -1,4 +1,4 @@
-name: piyasaekrani
+name: tabldot
 description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
@@ -132,6 +132,6 @@ flutter:
   # see https://flutter.dev/custom-fonts/#from-packages
 flutter_native_splash:
   color: "#0b497c"
-  image: assets/images/piyasa-ekrani-splash.png
+  image: assets/images/tabldot-splash.png
   android_12:
   fullscreen: false

@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:piyasaekrani/core/network/script.dart';
+import 'package:tabldot/core/network/script.dart';
 
 import '../constant/application_constans.dart';
 import '../model/post.dart';
@@ -10,7 +10,7 @@ class WebService {
     List<Post> postTest = <Post>[];
     Map<dynamic, dynamic>? toMap = {
       "method": "get",
-      "url": ApplicationConstants.API_URL + "piyasa-ekranis?populate=media&sort[0]=createdAt:desc&pagination[start]=$start",
+      "url": ApplicationConstants.API_URL + "tabldots?populate=media&sort[0]=createdAt:desc&pagination[start]=$start",
     };
     final response = await urlReturn(toMap);
     if (response.statusCode == 200) {

@@ -1,10 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:piyasaekrani/firebase_options.dart';
-import 'package:piyasaekrani/view/home_view.dart';
-import 'package:piyasaekrani/view/theme.dart';
-import 'package:piyasaekrani/viewmodel/home_view_model.dart';
+import 'package:tabldot/firebase_options.dart';
+import 'package:tabldot/view/home_view.dart';
+import 'package:tabldot/view/theme.dart';
+import 'package:tabldot/viewmodel/home_view_model.dart';
 import 'package:provider/provider.dart';
 
 import 'core/constant/localization/app_constant.dart';

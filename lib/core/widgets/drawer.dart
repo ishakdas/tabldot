@@ -29,7 +29,7 @@ class DrawerWidget extends StatelessWidget {
             ),
             decoration: BoxDecoration(color: Colors.transparent),
             currentAccountPicture: CircleAvatar(
-              backgroundImage: ExactAssetImage('assets/images/piyasa-ekrani-splash.png'),
+              backgroundImage: ExactAssetImage('assets/images/tabldot-splash.png'),
             ),
           ),
           ListTile(
