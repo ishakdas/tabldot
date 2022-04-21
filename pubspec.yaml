@@ -73,6 +73,8 @@ dependencies:
   firebase_core: ^1.14.1
   firebase_messaging: ^11.2.13
 
+  advance_pdf_viewer: any
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

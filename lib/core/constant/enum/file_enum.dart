@@ -1,1 +1,1 @@
-enum FileEnum { image, video, file }
+enum FileEnum { image, video, file, pdf }

@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:piyasaekrani/core/widgets/core_widget.dart';
 import 'package:piyasaekrani/core/widgets/scale_route.dart';
 
+import '../../view/pdf_read.dart';
 import '../../view/video_player.dart';
 import '../constant/enum/file_enum.dart';
 import 'image_details.dart';
@@ -35,6 +36,10 @@ Widget fileControlWidget(String fileType, String url, BuildContext context) {
         child: VideoApp(
           url: url,
         ));
+  } else if (fileType == FileEnum.pdf.name) {
+    return PdfReader(
+      url: url,
+    );
   } else {
     return Container(
       constraints: BoxConstraints(minHeight: 1, minWidth: double.infinity, maxHeight: x65Height),
