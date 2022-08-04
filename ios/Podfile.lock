@@ -1,5 +1,5 @@
 PODS:
-  - advance_pdf_viewer (1.0.5):
+  - advance_pdf_viewer_fork (1.1.7):
     - Flutter
   - Firebase/CoreOnly (8.14.0):
     - FirebaseCore (= 8.14.0)
@@ -94,7 +94,7 @@ PODS:
     - Flutter
 
 DEPENDENCIES:
-  - advance_pdf_viewer (from `.symlinks/plugins/advance_pdf_viewer/ios`)
+  - advance_pdf_viewer_fork (from `.symlinks/plugins/advance_pdf_viewer_fork/ios`)
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
   - firebase_messaging (from `.symlinks/plugins/firebase_messaging/ios`)
   - Flutter (from `Flutter`)
@@ -125,8 +125,8 @@ SPEC REPOS:
     - Toast
 
 EXTERNAL SOURCES:
-  advance_pdf_viewer:
-    :path: ".symlinks/plugins/advance_pdf_viewer/ios"
+  advance_pdf_viewer_fork:
+    :path: ".symlinks/plugins/advance_pdf_viewer_fork/ios"
   firebase_core:
     :path: ".symlinks/plugins/firebase_core/ios"
   firebase_messaging:
@@ -157,7 +157,7 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/wakelock/ios"
 
 SPEC CHECKSUMS:
-  advance_pdf_viewer: 5c832f382b4ca84fe735f893b7e91aa830c27d7b
+  advance_pdf_viewer_fork: 7364d9c1ea71ec070d35b78d4341eadbabe84549
   Firebase: 7e8fe528c161b9271d365217a74c16aaf834578e
   firebase_core: cdef02fcf55872191eb0568d4c31a7a700e38582
   firebase_messaging: 57f89047ec0084a4049e253ce84cea39becadad4
