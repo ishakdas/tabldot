@@ -8,4 +8,6 @@ abstract class LocaleKeys {
   static const saved_gallery = 'savedGallery';
   static const shareApp = 'shareApp';
   static const openContact = 'openContact';
+  static const contact = 'contact';
+  static const order = 'order';
 }

@@ -16,37 +16,40 @@ class DrawerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      child: ListView(
-        children: <Widget>[
-          const UserAccountsDrawerHeader(
-            accountName: Text(
-              "Yasa Çeliktaş",
-              style: TextStyle(color: Colors.black),
+      child: SizedBox(
+        width: double.maxFinite,
+        child: ListView(
+          children: <Widget>[
+            const UserAccountsDrawerHeader(
+              accountName: Text(
+                "Yasa Çeliktaş",
+                style: TextStyle(color: Colors.black),
+              ),
+              accountEmail: Text(
+                "yasa@yasaceliktas.com",
+                style: TextStyle(color: Colors.black),
+              ),
+              decoration: BoxDecoration(color: Colors.transparent),
+              currentAccountPicture: CircleAvatar(
+                backgroundImage: ExactAssetImage('assets/images/tabldot-splash.png'),
+              ),
             ),
-            accountEmail: Text(
-              "yasa@yasaceliktas.com",
-              style: TextStyle(color: Colors.black),
-            ),
-            decoration: BoxDecoration(color: Colors.transparent),
-            currentAccountPicture: CircleAvatar(
-              backgroundImage: ExactAssetImage('assets/images/tabldot-splash.png'),
-            ),
-          ),
-          ListTile(
-              leading: const Icon(FontAwesomeIcons.share),
-              title: Text(LocaleKeys.shareApp.tr()),
-              onTap: () {
-                Share.share('check out my website https://example.com', subject: 'Look what I made!');
-                Navigator.pop(context);
-              }),
-          ListTile(
-              leading: const Icon(FontAwesomeIcons.whatsappSquare),
-              title: Text(LocaleKeys.openContact.tr()),
-              onTap: () {
-                openwhatsapp(context);
-                Navigator.pop(context);
-              }),
-        ],
+            ListTile(
+                leading: const Icon(FontAwesomeIcons.share),
+                title: Text(LocaleKeys.shareApp.tr()),
+                onTap: () {
+                  Share.share('Web Sitemizi ziyaret edin: https://piyasaekrani.org');
+                  Navigator.pop(context);
+                }),
+            ListTile(
+                leading: const Icon(FontAwesomeIcons.whatsappSquare),
+                title: Text(LocaleKeys.openContact.tr()),
+                onTap: () {
+                  openwhatsapp(context);
+                  Navigator.pop(context);
+                }),
+          ],
+        ),
       ),
     );
   }

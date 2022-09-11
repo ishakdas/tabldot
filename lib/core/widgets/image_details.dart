@@ -67,14 +67,11 @@ class _PostImageState extends State<PostImage> {
         systemOverlayStyle: SystemUiOverlayStyle.light,
       ),
       backgroundColor: Colors.black45,
-      body: Container(
-        child: PhotoView(
-            minScale: PhotoViewComputedScale.contained * 0.8,
-            maxScale: PhotoViewComputedScale.covered * 1.8,
-            initialScale: PhotoViewComputedScale.contained * 1.1,
-            controller: controller,
-            imageProvider: NetworkImage(widget.url)),
-      ),
+      body: PhotoView(
+          minScale: PhotoViewComputedScale.contained * 0.8,
+          maxScale: PhotoViewComputedScale.covered * 1.8,
+          initialScale: PhotoViewComputedScale.contained * 1.1,
+          imageProvider: NetworkImage(widget.url)),
     );
   }
 }

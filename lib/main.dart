@@ -2,9 +2,9 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:tabldot/firebase_options.dart';
-import 'package:tabldot/view/home_view.dart';
+import 'package:tabldot/view/categories_view.dart';
 import 'package:tabldot/view/theme.dart';
-import 'package:tabldot/viewmodel/home_view_model.dart';
+import 'package:tabldot/viewmodel/categories_view_model.dart';
 import 'package:provider/provider.dart';
 
 import 'core/constant/localization/app_constant.dart';
@@ -31,15 +31,18 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-        create: (BuildContext context) => HomeViewModel(),
-        child: MaterialApp(
-            theme: ThemeClass.lightTheme,
-            darkTheme: ThemeClass.darkTheme,
-            debugShowCheckedModeBanner: false,
-            localizationsDelegates: context.localizationDelegates,
-            supportedLocales: context.supportedLocales,
-            locale: context.locale,
-            home: HomeView()));
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider.value(value: CategoriesViewModel()),
+      ],
+      child: MaterialApp(
+          theme: ThemeClass.lightTheme,
+          darkTheme: ThemeClass.darkTheme,
+          debugShowCheckedModeBanner: false,
+          localizationsDelegates: context.localizationDelegates,
+          supportedLocales: context.supportedLocales,
+          locale: context.locale,
+          home: const Categories_view()),
+    );
   }
 }

@@ -3,73 +3,160 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:provider/provider.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../core/constant/application_constans.dart';
 import '../core/key/local_key.dart';
 import '../core/model/post.dart';
+import '../core/widgets/bottom_button.dart';
 import '../core/widgets/core_widget.dart';
 import '../core/widgets/drawer.dart';
 import '../core/widgets/file_control_widget.dart';
 import '../core/widgets/pxHeight.dart';
 import '../viewmodel/home_view_model.dart';
+import 'contact.dart';
+import 'order_details_view.dart';
 import 'post_detail.dart';
 
 class HomeView extends StatelessWidget {
+  const HomeView({required this.id, Key? key}) : super(key: key);
+  final int id;
   @override
   Widget build(BuildContext context) {
+    return MyStatefulWidget(id: id);
+  }
+}
+
+class MyStatefulWidget extends StatefulWidget {
+  const MyStatefulWidget({Key? key, required this.id}) : super(key: key);
+  final int id;
+  @override
+  State<MyStatefulWidget> createState() => _MyStatefulWidgetState();
+}
+
+class _MyStatefulWidgetState extends State<MyStatefulWidget> {
+  HomeViewModel viewModel = HomeViewModel();
+  int _selectedIndex = 0;
+  static const TextStyle optionStyle = TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+  @override
+  void initState() {
+    viewModel.setID(widget.id);
+    viewModel.fetchJobs(0);
+    super.initState();
+  }
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    Widget _widgetOptions(HomeViewModel model, int i) {
+      if (i == 0) {
+        if (model.state == HomeState.BUSY) {
+          return buildLoadingWidget();
+        } else if (model.state == HomeState.ERROR) {
+          return buildErrorWidget();
+        } else {
+          return RefreshIndicator(
+              displacement: 250,
+              strokeWidth: 3,
+              triggerMode: RefreshIndicatorTriggerMode.onEdge,
+              onRefresh: () async {
+                await model.fetchJobs(0);
+              },
+              child: _buildListView(context, model));
+        }
+      } else if (i == 1) {
+        return const OrderDetails();
+      } else {
+        return const Profile();
+      }
+    }
+
     return Scaffold(
-        backgroundColor: const Color.fromARGB(255, 29, 83, 14),
-        drawer: const DrawerWidget(),
-        appBar: buildAppBar(),
-        body: context.watch<HomeViewModel>().state == HomeState.BUSY
-            ? buildLoadingWidget()
-            : context.watch<HomeViewModel>().state == HomeState.ERROR
-                ? buildErrorWidget()
-                : RefreshIndicator(
-                    displacement: 250,
-                    strokeWidth: 3,
-                    triggerMode: RefreshIndicatorTriggerMode.onEdge,
-                    onRefresh: () async {
-                      await context.read<HomeViewModel>().fetchJobs(0);
-                    },
-                    child: buildListView(context)));
-  }
-
-  AppBar buildAppBar() {
-    return AppBar(
-      title: Text(LocaleKeys.main_title.tr()),
-    );
-  }
-
-  Center buildErrorWidget() => Center(child: Text(LocaleKeys.internet_error.tr()));
-
-  Center buildLoadingWidget() => const Center(child: CircularProgressIndicator());
-
-  PagedListView buildListView(BuildContext context) {
-    return PagedListView<int, Post>(
-      pagingController: context.read<HomeViewModel>().pagingController,
-      builderDelegate: PagedChildBuilderDelegate<Post>(
-        itemBuilder: (context, item, index) => buildListItem(context, item),
+      backgroundColor: const Color.fromARGB(255, 30, 47, 26),
+      drawer: const DrawerWidget(),
+      appBar: buildAppBar(),
+      body: ChangeNotifierProvider<HomeViewModel>(
+          create: (BuildContext context) => viewModel,
+          child: Consumer<HomeViewModel>(builder: (context, model, _) {
+            return Center(
+              child: _widgetOptions(model, _selectedIndex),
+            );
+          })),
+      bottomNavigationBar: BottomNavigationBar(
+        items: <BottomNavigationBarItem>[
+          const BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          const BottomNavigationBarItem(
+            icon: Icon(FontAwesomeIcons.bagShopping),
+            label: 'Sipraişlerim',
+          ),
+          BottomNavigationBarItem(
+            icon: const Icon(FontAwesomeIcons.addressBook),
+            label: LocaleKeys.contact.tr(),
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: const Color.fromARGB(255, 29, 83, 14),
+        onTap: _onItemTapped,
       ),
+      /*  */
     );
   }
+}
 
-  Widget buildListItem(BuildContext context, Post item) {
-    return Container(
-        padding: const EdgeInsets.all(5.0),
-        /* decoration: BoxDecoration(
+class ContactWidget extends StatelessWidget {
+  const ContactWidget({
+    Key? key,
+  }) : super(key: key);
+
+  static const TextStyle optionStyle = TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+  @override
+  Widget build(BuildContext context) {
+    return const Text(
+      'Index 2: School',
+      style: optionStyle,
+    );
+  }
+}
+
+PagedListView _buildListView(BuildContext context, HomeViewModel homeViewModel) {
+  return PagedListView<int, Post>(
+    pagingController: homeViewModel.pagingController,
+    builderDelegate: PagedChildBuilderDelegate<Post>(
+      itemBuilder: (context, item, index) => buildListItem(context, item, homeViewModel),
+    ),
+  );
+}
+
+Widget buildListItem(BuildContext context, Post item, HomeViewModel homeViewModel) {
+  return Container(
+      padding: const EdgeInsets.all(5.0),
+      /* decoration: BoxDecoration(
           border: Border.all(
             color: Colors.grey,
             width: 2.0,
           ),
           borderRadius: BorderRadius.circular(15),
         ),*/
-        child: bodyColumn(item, context));
-  }
+      child: bodyColumn(item, context, homeViewModel));
 }
 
-Column bodyColumn(Post homePost, BuildContext context) {
+AppBar buildAppBar() {
+  return AppBar(
+    title: Text(LocaleKeys.main_title.tr()),
+  );
+}
+
+Center buildErrorWidget() => Center(child: Text(LocaleKeys.internet_error.tr()));
+
+Center buildLoadingWidget() => const Center(child: CircularProgressIndicator());
+Widget bodyColumn(Post homePost, BuildContext context, HomeViewModel homeViewModel) {
   bool isFile = homePost.attributes!.media!.data == null;
   String fileType = "";
   if (!isFile) {
@@ -91,68 +178,18 @@ Column bodyColumn(Post homePost, BuildContext context) {
       PxHeight(),
       fileControlWidget(fileType, ApplicationConstants.URL + homePost.attributes!.media!.data![0].attributes!.url!, context),
       PxHeight(),
-      Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Row(
-          children: [
-            Expanded(
-                flex: 4,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    if (homePost.attributes?.aciklama != null)
-                      IconButton(
-                          icon: const FaIcon(FontAwesomeIcons.circleInfo),
-                          onPressed: () async {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => PostDetail(
-                                        post: homePost.attributes!,
-                                      )),
-                            );
-                          }),
-                  ],
-                )),
-            Expanded(
-                flex: 1,
-                child: homePost.attributes!.link != ""
-                    ? TextButton(
-                        onPressed: () {},
-                        child: IconButton(
-                            icon: const FaIcon(
-                              FontAwesomeIcons.earthAmericas,
-                              color: Colors.white,
-                            ),
-                            onPressed: () async {
-                              if (await canLaunch(homePost.attributes!.link!)) {
-                                await launch(homePost.attributes!.link!);
-                              } else {
-                                // can't launch url
-                              }
-                            }),
-                      )
-                    : Container()),
-            Expanded(
-                flex: 1,
-                child: TextButton(
-                  onPressed: () async {
-                    try {
-                      context.watch<HomeViewModel>().fileDownload(
-                          ApplicationConstants.URL + homePost.attributes!.media!.data![0].attributes!.url!, fileType);
-                    } catch (error) {
-                      print(error);
-                    }
-                  },
-                  child: const FaIcon(
-                    FontAwesomeIcons.download,
-                    color: Colors.white,
-                  ),
-                )),
-          ],
-        ),
+      BottomButton(
+        fileType: fileType,
+        homePost: homePost,
       )
     ],
   );
-  return _return;
+  return InkWell(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => PostDetail(post: homePost, id: homePost.id!, fileType: fileType)),
+        );
+      },
+      child: _return);
 }

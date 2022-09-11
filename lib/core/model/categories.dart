@@ -4,23 +4,23 @@
 
 import 'dart:convert';
 
-Post postFromJson(String str) => Post.fromJson(json.decode(str));
+Categories categoriesFromJson(String str) => Categories.fromJson(json.decode(str));
 
-String postToJson(Post data) => json.encode(data.toJson());
-List<Post> postsFromJson2(String str) => List<Post>.from(json.decode(str).map((x) => Post.fromJson(x)));
+String categoriesToJson(Categories data) => json.encode(data.toJson());
+List<Categories> categoriesFromJson2(String str) => List<Categories>.from(json.decode(str).map((x) => Categories.fromJson(x)));
 
-class Post {
-  Post({
+class Categories {
+  Categories({
     this.id,
     this.attributes,
   });
 
   int? id;
-  PostAttributes? attributes;
+  CategoriesAttributes? attributes;
 
-  factory Post.fromJson(Map<String, dynamic> json) => Post(
+  factory Categories.fromJson(Map<String, dynamic> json) => Categories(
         id: json["id"],
-        attributes: PostAttributes.fromJson(json["attributes"]),
+        attributes: CategoriesAttributes.fromJson(json["attributes"]),
       );
 
   Map<String, dynamic> toJson() => {
@@ -29,32 +29,24 @@ class Post {
       };
 }
 
-class PostAttributes {
-  PostAttributes({
-    this.baslik,
-    this.aciklama,
-    this.link,
-    this.telefon,
+class CategoriesAttributes {
+  CategoriesAttributes({
+    this.kategoriAdi,
     this.createdAt,
     this.updatedAt,
     this.publishedAt,
     this.media,
   });
 
-  String? baslik;
-  String? aciklama;
-  String? link;
-  String? telefon;
+  String? kategoriAdi;
+
   DateTime? createdAt;
   DateTime? updatedAt;
   DateTime? publishedAt;
   Media? media;
 
-  factory PostAttributes.fromJson(Map<String, dynamic> json) => PostAttributes(
-        baslik: json["Baslik"],
-        aciklama: json["aciklama"],
-        link: json["link"],
-        telefon: json["telefon"],
+  factory CategoriesAttributes.fromJson(Map<String, dynamic> json) => CategoriesAttributes(
+        kategoriAdi: json["kategoriAdi"],
         createdAt: DateTime.parse(json["createdAt"]),
         updatedAt: DateTime.parse(json["updatedAt"]),
         publishedAt: DateTime.parse(json["publishedAt"]),
@@ -62,10 +54,7 @@ class PostAttributes {
       );
 
   Map<String, dynamic> toJson() => {
-        "Baslik": baslik,
-        "aciklama": aciklama,
-        "link": link,
-        "telefon": telefon,
+        "kategoriAdi": kategoriAdi,
         "createdAt": createdAt?.toIso8601String(),
         "updatedAt": updatedAt?.toIso8601String(),
         "publishedAt": publishedAt?.toIso8601String(),

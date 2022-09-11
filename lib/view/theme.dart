@@ -4,7 +4,7 @@ class ThemeClass {
   static ThemeData lightTheme = ThemeData(
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
-          primary: Colors.blueGrey[900],
+          primary: const Color.fromARGB(255, 29, 83, 14),
         ),
       ),
       iconTheme: const IconThemeData(color: Colors.white),
